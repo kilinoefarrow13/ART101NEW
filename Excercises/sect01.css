@@ -1,0 +1,6 @@
+body { background: pink}
+
+p { float: left: 20px; background: blue; Padding: 50px; width: 50px;} 
+p2 {  float: right; background: green; Padding: 50px; width: 50px; }
+p3 { float: left; background: yellow; padding: 50px; width: 50px; }
+p4 { float: right: -20px; background: red; padding: 50px; width: 50px; }

@@ -1,0 +1,10 @@
+body {background-image: url(birdsenv.jpg);}
+
+h1 {color: rgb(232, 125, 143); background: #cacbc5; padding: 100px; width: 700px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+p {color: rgb(232, 125, 143); background: #cacbc5; padding: 100px; width: 200px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+
+#cloudone { float: right 50px; width: 600px; }
+
+#bluepic {width: 200px}
+
+.rio {float: right 300px }

@@ -1,0 +1,15 @@
+h1 {color: purple; }
+
+
+p {
+    background: pink;
+    color: purple; 
+    padding-top:20px;
+    margin: 50px;
+    width: 100px;
+    height: 75px;
+}
+
+ul {color: purple}
+
+body {background: rgb(164, 195, 120)}

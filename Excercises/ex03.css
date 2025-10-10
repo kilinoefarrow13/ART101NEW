@@ -1,0 +1,51 @@
+.test-div {
+background: rgb(247, 199, 67);
+padding: 20px;
+margin: 20px;
+}
+
+.test-div {font-size: 15px;}
+
+
+.test-div h2 {
+ font-size: 24px;
+ margin-bottom: 10px;
+ color: rgb(202, 71, 11);
+ text-decoration: underline;
+}
+
+.test-div {
+   color:rgb(77, 6, 4)
+}
+
+
+button {
+   margin-top: 10px;
+   background-color: rgb(202, 71, 11);
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   }
+
+
+button.special {
+   background-color: rgb(92, 123, 37);
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   }
+
+.test-div:hover {
+   background:rgb(236, 145, 103); }
+
+
+h2 {font-family: ;}
+
+
+p.special {
+   font-size: 18px;
+   color: rgb(92, 123, 37);
+   font-style: italic;
+   margin: 20px 0;}

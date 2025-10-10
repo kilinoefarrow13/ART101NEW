@@ -1,0 +1,14 @@
+body {background: #de9a92; padding: 50px;}
+
+h1, h2, h3 {color: #a08a2f; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+
+#mypic {width: 600px}
+
+p {color: #784a2c}
+
+ol {color: #784a2c}
+
+#introduction h2 {font-style: italic; }
+#introduction p { font-size: 120%; }
+
+.navigation { display: flex; gap: 20px; }
