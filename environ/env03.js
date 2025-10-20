@@ -1,0 +1,36 @@
+$(document).ready(function() {
+
+//declare where this space is
+let location = "Rio De Janeiro"; 
+
+//declare an array with who/what populates this enviornment
+let who = ["Blu", "Nigel", "Linda", "Tulio", "Birds", "People", "Monkeys", "Dogs"];
+
+//declare Blu's characteristics
+let bluBird = {
+    species: "bird", 
+    type: "spix's macaw", 
+    color: "blue", 
+    occupation: "pet", 
+    belongsTo: "Linda", 
+    hieght: "7 inches", 
+    friends: ["Jewel", "Nico", "Pedro", "Luis", "Rafael"], 
+}; 
+
+let megaSentence; 
+megaSentence = "<p>This is " + location + ", the land of birds!</p>"; 
+
+megaSentence = megaSentence + "<p>Who lives here: " + who[0] + ", " + who[1] + ", " + who[5] +
+ ", " + who[4] + ", and " + who[6] + "!" + "</p>"; 
+
+ //introduce blue
+
+ let introduction;
+ introduction = "<p>Meet Blue: " + "Species - " + bluBird.species + ", Type - " + bluBird.type + 
+ ", Color - " + bluBird.color + ", Occupation - " + bluBird.occupation + ", Belongs to - " + bluBird.belongsTo + 
+ ", Friends - " + bluBird.friends[0] + " " + bluBird.friends[1] + "</p>"; 
+
+
+$("#output").html(megaSentence + introduction);
+
+});
