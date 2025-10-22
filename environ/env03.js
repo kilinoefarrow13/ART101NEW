@@ -28,9 +28,28 @@ megaSentence = megaSentence + "<p>Who lives here: " + who[0] + ", " + who[1] + "
  let introduction;
  introduction = "<p>Meet Blue: " + "Species - " + bluBird.species + ", Type - " + bluBird.type + 
  ", Color - " + bluBird.color + ", Occupation - " + bluBird.occupation + ", Belongs to - " + bluBird.belongsTo + 
- ", Friends - " + bluBird.friends[0] + " " + bluBird.friends[1] + "</p>"; 
+ ", Friends - " + bluBird.friends[0] + " and " + bluBird.friends[1] + "</p>"; 
 
 
 $("#output").html(megaSentence + introduction);
+ 
+});
+
+var count = 0;
+var colors= ["Red", "Pink", "Yellow", "Blue", "Blue", "Purple"];
+
+$("#needy-button").click( function(){
+    count++; 
+
+let reminder=count % colors.length; 
+
+$("#needy-button").html(" Color: " + colors[reminder] );
+
+$("body").css ("background-color", colors[reminder]);
+
+count=count+1;
+
+
+
 
 });
