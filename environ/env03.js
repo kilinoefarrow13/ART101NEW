@@ -50,6 +50,28 @@ $("body").css ("background-color", colors[reminder]);
 count=count+1;
 
 
+});
 
 
+$(document).ready(function(){
+    var isMoving = true;
+
+    function bounce() {
+        if(isMoving) {
+            $("#bluepic").animate({left: "1000px"}, 2000)
+                         .animate({left: "0px"}, 2000, bounce);
+        }
+    }
+
+    $("#bluepic").click(function(){
+        if(isMoving) {
+            $(this).stop(true, true);
+            isMoving = false;
+        } else {
+            isMoving = true;
+            bounce();
+        }
+    });
+
+    bounce();
 });

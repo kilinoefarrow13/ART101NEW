@@ -8,6 +8,6 @@ a { color: rgb(232, 125, 143); padding: 100px; width: 200px; font-family:'Frankl
 
 #cloudone { float: right 50px; width: 600px; }
 
-#bluepic {width: 200px}
+#bluepic {width: 200px; position: relative;}
 
 .rio {float: right 300px }
