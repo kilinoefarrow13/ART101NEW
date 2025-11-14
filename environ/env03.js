@@ -48,10 +48,7 @@ $("#needy-button").html(" Color: " + colors[reminder] );
 $("body").css ("background-color", colors[reminder]);
 
 count=count+1;
-
-
 });
-
 
 $(document).ready(function(){
     var isMoving = true;
@@ -62,7 +59,6 @@ $(document).ready(function(){
                          .animate({left: "0px"}, 2000, bounce);
         }
     }
-
     $("#bluepic").click(function(){
         if(isMoving) {
             $(this).stop(true, true);
@@ -75,3 +71,9 @@ $(document).ready(function(){
 
     bounce();
 });
+
+$("#cloudone").hover(
+  function() { $("#text").text("Make it rain!"); },
+  function() { $("#text").text("Going so soon?"); }
+);
+
