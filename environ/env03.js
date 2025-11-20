@@ -1,79 +1,102 @@
 $(document).ready(function() {
+    //refactor 1
+    let environment = {
+        location: "Rio De Janeiro",
+        inhabitants: ["Blu", "Nigel", "Linda", "Tulio", "Birds", "People", "Monkeys", "Dogs"]
+    };
 
-//declare where this space is
-let location = "Rio De Janeiro"; 
+    let bluBird = {
+        species: "bird", 
+        type: "spix's macaw", 
+        color: "blue", 
+        occupation: "pet", 
+        belongsTo: "Linda", 
+        height: "7 inches", 
+        friends: ["Jewel", "Nico", "Pedro", "Luis", "Rafael"]
+    };
 
-//declare an array with who/what populates this enviornment
-let who = ["Blu", "Nigel", "Linda", "Tulio", "Birds", "People", "Monkeys", "Dogs"];
-
-//declare Blu's characteristics
-let bluBird = {
-    species: "bird", 
-    type: "spix's macaw", 
-    color: "blue", 
-    occupation: "pet", 
-    belongsTo: "Linda", 
-    hieght: "7 inches", 
-    friends: ["Jewel", "Nico", "Pedro", "Luis", "Rafael"], 
-}; 
-
-let megaSentence; 
-megaSentence = "<p>This is " + location + ", the land of birds!</p>"; 
-
-megaSentence = megaSentence + "<p>Who lives here: " + who[0] + ", " + who[1] + ", " + who[5] +
- ", " + who[4] + ", and " + who[6] + "!" + "</p>"; 
-
- //introduce blue
-
- let introduction;
- introduction = "<p>Meet Blue: " + "Species - " + bluBird.species + ", Type - " + bluBird.type + 
- ", Color - " + bluBird.color + ", Occupation - " + bluBird.occupation + ", Belongs to - " + bluBird.belongsTo + 
- ", Friends - " + bluBird.friends[0] + " and " + bluBird.friends[1] + "</p>"; 
-
-
-$("#output").html(megaSentence + introduction);
- 
-});
-
-var count = 0;
-var colors= ["Red", "Pink", "Yellow", "Blue", "Blue", "Purple"];
-
-$("#needy-button").click( function(){
-    count++; 
-
-let reminder=count % colors.length; 
-
-$("#needy-button").html(" Color: " + colors[reminder] );
-
-$("body").css ("background-color", colors[reminder]);
-
-count=count+1;
-});
-
-$(document).ready(function(){
-    var isMoving = true;
-
-    function bounce() {
-        if(isMoving) {
-            $("#bluepic").animate({left: "1000px"}, 2000)
-                         .animate({left: "0px"}, 2000, bounce);
-        }
+    //refactor 2
+    function createLocationDescription(location, inhabitants) {
+        let featured = [inhabitants[0], inhabitants[1], inhabitants[5], inhabitants[4], inhabitants[6]];
+        return `<p>This is ${location}, the land of birds!</p>
+                <p>Who lives here: ${featured.join(", ")}!</p>`;
     }
-    $("#bluepic").click(function(){
-        if(isMoving) {
-            $(this).stop(true, true);
-            isMoving = false;
-        } else {
-            isMoving = true;
-            bounce();
+
+    function createBirdIntroduction(bird) {
+        let topFriends = bird.friends.slice(0, 2).join(" and ");
+        return `<p>Meet Blue: Species - ${bird.species}, Type - ${bird.type}, 
+                Color - ${bird.color}, Occupation - ${bird.occupation}, 
+                Belongs to - ${bird.belongsTo}, Friends - ${topFriends}</p>`;
+    }
+
+    let content = createLocationDescription(environment.location, environment.inhabitants) + 
+                   createBirdIntroduction(bluBird);
+    $("#output").html(content);
+
+    //refactor 3
+    let ColorChanger = {
+        colors: ["Red", "Pink", "Yellow", "Blue", "Purple"],
+        currentIndex: 0,
+
+        getNextColor: function() {
+            this.currentIndex = (this.currentIndex + 1) % this.colors.length;
+            return this.colors[this.currentIndex];
+        },
+
+        applyColor: function(color) {
+            $("#needy-button").html(`Color: ${color}`);
+            $("body").css("background-color", color);
+        },
+
+        changeColor: function() {
+            let nextColor = this.getNextColor();
+            this.applyColor(nextColor);
         }
+    };
+
+    $("#needy-button").click(function() {
+        ColorChanger.changeColor();
     });
 
-    bounce();
-});
+    //refactor 4
+    let BirdAnimation = {
+        isMoving: true,
+        animationDistance: "1000px",
+        animationDuration: 2000,
 
-$("#cloudone").hover(
-  function() { $("#text").text("Make it rain!"); },
-  function() { $("#text").text("Going so soon?"); }
-);
-
+        animate: function() {
+            if (this.isMoving) {
+                let self = this;
+                $("#bluepic")
+                    .animate({left: this.animationDistance}, this.animationDuration)
+                    .animate({left: "0px"}, this.animationDuration, function() {
+                        self.animate();
+                    });
+            }
+        },
+        toggle: function() {
+            if (this.isMoving) {
+                $("#bluepic").stop(true, true);
+                this.isMoving = false;
+            } else {
+                this.isMoving = true;
+                this.animate();
+            }
+        },
+        init: function() {
+            let self = this;
+            $("#bluepic").click(function() {
+                self.toggle();
+            });
+            this.animate();
+        }
+    };
+    BirdAnimation.init();
+    $("#cloudone").hover(
+        function() { 
+            $("#text").text("Make it rain!"); 
+        },
+        function() { 
+            $("#text").text("Going so soon?"); 
+        }
+    ); });
